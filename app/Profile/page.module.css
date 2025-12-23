@@ -20,6 +20,17 @@
   border-radius: var(--border-radius);
 }
 
+.imagePlaceholder {
+  width: 240px;
+  height: 180px;
+  border-radius: var(--border-radius);
+  background: var(--color-bg-sub);
+  color: var(--color-text-sub);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+}
+
 .name {
   font-size: 1.2rem;
   font-weight: bold;

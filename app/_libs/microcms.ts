@@ -21,7 +21,7 @@ export type Blog = {
   description: string;
   content: string;
   thumbnail?: MicroCMSImage;
-  category: Category;
+  category?: Category | null;
 } & MicroCMSListContent;
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
