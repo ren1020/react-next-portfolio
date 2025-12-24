@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import ProfileAvatar from "@/app/_components/ProfileAvatar";
 import ButtonLink from "@/app/_components/ButtonLink";
 
 export const revalidate = 60;
@@ -13,17 +14,24 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.panel}>
-        <div className={styles.panelHeader}>
-          <p className={styles.sectionKicker}>PROFILE</p>
-          <h2 className={styles.sectionTitle}>プロフィールへご案内</h2>
-          <p className={styles.sectionLead}>
-            経歴やスキルセット、取り組んできた内容をまとめています。まずは私の
-            ことを知ってください。
-          </p>
-        </div>
-        <div className={styles.panelAction}>
-          <ButtonLink href="/Profile">Profile</ButtonLink>
+      <section className={styles.profileSection}>
+        <div className={styles.profileInner}>
+          <ProfileAvatar
+            className={styles.profileAvatar}
+            src="/profile.png"
+            alt="プロフィール画像"
+            size={220}
+            priority
+          />
+          <div className={styles.panelHeader}>
+            <p className={styles.sectionKicker}>PROFILE</p>
+            <h2 className={styles.sectionTitle}>プロフィール</h2>
+            <p className={styles.sectionLead}>
+              経歴や資格、取り組んできた内容をまとめています。</p>
+          </div>
+          <div className={styles.panelAction}>
+            <ButtonLink href="/Profile">Profile</ButtonLink>
+          </div>
         </div>
       </section>
 

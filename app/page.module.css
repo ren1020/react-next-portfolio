@@ -168,6 +168,101 @@
   justify-content: space-between;
 }
 
+/* より丸みを出したプロフィール用パネル */
+.panelProfile {
+  border-radius: 28px;
+  /* 少し柔らかい印象のための影を微調整 */
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.09);
+}
+
+.profileSection {
+  position: relative;
+  width: min(720px, calc(100% - 48px));
+  margin: -4px auto 84px;
+  padding: 28px 24px;
+  background: transparent;
+  z-index: 1;
+  /* 円とコンテンツの中心を合わせる */
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+/* 円の中に収めるための内側ラッパー */
+.profileInner {
+  position: relative;
+  width: 480px; /* 円(560px)に合わせて拡大 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 560px; /* 円の直径に合わせて垂直センタリング */
+}
+
+/* 丸型アバター画像 */
+.profileAvatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 4px;
+  border: 3px solid rgba(200, 127, 90, 0.24);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.10);
+}
+
+/* Next.js Image に適用（ピクセルアートのシャープさ維持） */
+.profileAvatar :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges; /* fallback */
+  transform: scale(1.2); /* トリミングで大きく表示 */
+}
+
+.profileSection::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 560px;
+  height: 560px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #F4E2D1; /* 一色の柔らかい円 */
+  filter: none;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.profileSection .panelHeader,
+.profileSection .panelAction {
+  position: relative;
+  z-index: 1;
+}
+.profileSection .sectionLead {
+  max-width: 480px;
+  margin: 8px auto 0;
+}
+
+/* テキストが円内に収まるよう中央寄せ */
+.profileSection .panelHeader {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  text-align: center;
+}
+.profileSection .sectionLead {
+  max-width: 420px;
+  margin: 8px auto 0;
+}
+.profileSection .panelAction {
+  display: grid;
+  justify-content: center;
+}
+
 .panel:nth-of-type(1) {
   animation-delay: 400ms;
 }
@@ -226,6 +321,19 @@
     height: auto;
     padding: 28px;
   }
+  .profileSection {
+    width: calc(100% - 32px);
+    padding: 24px;
+    min-height: 560px; /* タブレットでも中央揃え維持 */
+  }
+  .profileInner {
+    width: 420px;
+    height: 560px; /* タブレットでも円の直径に合わせる */
+  }
+  .profileAvatar {
+    width: 190px;
+    height: 190px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -263,9 +371,37 @@
     margin-top: -8px;
   }
 
+  .panelProfile {
+    border-radius: 24px;
+  }
+
   .panelHeader {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .profileSection {
+    width: calc(100% - 24px);
+    padding: 20px;
+    margin-top: -8px;
+    min-height: 380px; /* 円サイズに合わせる */
+  }
+
+  .profileSection::before {
+    top: 50%;
+    width: 380px;
+    height: 380px;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+  }
+
+  .profileInner {
+    width: 340px; /* モバイルは円(380px)に合わせる */
+    height: 380px; /* 円の直径に合わせて垂直センタリング */
+  }
+  .profileAvatar {
+    width: 170px;
+    height: 170px;
   }
 
   .panelAction :global(a) {
