@@ -7,10 +7,10 @@ export default function Footer() {
       <nav className={styles.nav}>
         <ul className={styles.items}>
           <li className={styles.item}>
-            <Link href="/news">News</Link>
+            <Link href="/Profile">Profile</Link>
           </li>
           <li className={styles.item}>
-            <Link href="/Profile">Profile</Link>
+            <Link href="/blog">Blog</Link>
           </li>
           <li className={styles.item}>
             <Link href="/contact">Contact</Link>

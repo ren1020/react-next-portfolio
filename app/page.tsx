@@ -3,71 +3,57 @@ import ButtonLink from "@/app/_components/ButtonLink";
 
 export const revalidate = 60;
 
-type Project = {
-  title: string;
-  description: string;
-  tech?: string[];
-  href?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "ポートフォリオサイト",
-    description:
-      "このサイト自体。Next.js + TypeScript で作成。レスポンシブ対応、静的生成。",
-    tech: ["Next.js", "TypeScript", "CSS Modules"],
-    href: "/",
-  },
-  {
-    title: "Project Alpha",
-    description: "API と連携するダッシュボード。データ可視化・認証を実装。",
-    tech: ["React", "Chart.js", "Node.js"],
-    href: "#",
-  },
-  {
-    title: "Open Source Library",
-    description: "小さなユーティリティライブラリ。テストと CI を備えています。",
-    tech: ["TypeScript", "Jest"],
-    href: "#",
-  },
-];
-
 export default function Home() {
   return (
-    <>
-      <section className={styles.top}>
-        <div>
-          <h1 className={styles.title}>沖田</h1>
+    <main className={styles.page}>
+      <section className={styles.welcome}>
+        <div className={styles.welcomeInner}>
+          <p className={styles.kicker}>Welcome to My Portfolio</p>
+          <h1 className={styles.title}>Hello</h1>
           <p className={styles.description}>
-            京都デザイン＆テクノロジー専門学校/ホワイトハッカー専攻
+            ポートフォリオへようこそ。明るく使いやすいフロントエンド体験をつくる
+            ことに、心を込めて取り組んでいます。
           </p>
-          <p className={styles.description} style={{ marginTop: "1rem" }}>
-            ユーザー体験を大切にするフロントエンド実装が得意です。Next.js
-            を用いた静的サイトや SPA、タイプセーフなコードを心がけています。
+          <p className={styles.description}>
+            Next.js と TypeScript を軸に、設計から実装・改善まで。
+            ユーザーの笑顔が見える UI/UX をめざします。
           </p>
+          <div className={styles.tags}>
+            <span>Next.js</span>
+            <span>TypeScript</span>
+            <span>UI/UX Design</span>
+          </div>
+          <p className={styles.scrollHint}>下へスクロール →</p>
         </div>
       </section>
 
-      <section className={styles.news}>
-        <h2 className={styles.newsTitle}>Projects</h2>
-        <div className={styles.projects}>
-          {projects.map((p) => (
-            <article key={p.title} className={styles.card}>
-              <h3>{p.title}</h3>
-              <p className={styles.cardDesc}>{p.description}</p>
-              {p.tech && (
-                <p className={styles.cardTech}>{p.tech.join(" ・ ")}</p>
-              )}
-              <div style={{ marginTop: "12px" }}>
-                <ButtonLink href={p.href ?? "#"}>詳細を見る</ButtonLink>
-              </div>
-            </article>
-          ))}
+      <section className={styles.panel}>
+        <div className={styles.panelHeader}>
+          <p className={styles.sectionKicker}>PROFILE</p>
+          <h2 className={styles.sectionTitle}>プロフィールへご案内</h2>
+          <p className={styles.sectionLead}>
+            経歴やスキルセット、取り組んできた内容をまとめています。まずは私の
+            ことを知ってください。
+          </p>
         </div>
-        <div className={styles.newsLink}>
-          <ButtonLink href="/contact">Contact</ButtonLink>
+        <div className={styles.panelAction}>
+          <ButtonLink href="/Profile">Profile</ButtonLink>
         </div>
       </section>
-    </>
+
+      <section className={styles.panel}>
+        <div className={styles.panelHeader}>
+          <p className={styles.sectionKicker}>BLOG</p>
+          <h2 className={styles.sectionTitle}>ブログを読む</h2>
+          <p className={styles.sectionLead}>
+            学びや制作の気づきをブログにまとめています。実装の工夫や振り返りを
+            ぜひチェックしてください。
+          </p>
+        </div>
+        <div className={styles.panelAction}>
+          <ButtonLink href="/blog">Blog</ButtonLink>
+        </div>
+      </section>
+    </main>
   );
 }

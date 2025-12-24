@@ -3,6 +3,8 @@ import { getMembersList } from "@/app/_libs/microcms";
 import { MEMBERS_LIST_LIMIT } from "@/app/_constants";
 import styles from "./page.module.css";
 
+export const revalidate = 60;
+
 export default async function Page() {
   let contents = [] as Awaited<ReturnType<typeof getMembersList>>['contents'];
   let hasError = false;
