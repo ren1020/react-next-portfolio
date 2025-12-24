@@ -4,15 +4,23 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
     "YuGothic", "Hiragino Kaku Gothic ProN", Arial, "メイリオ", Meiryo,
     sans-serif;
-  --color-bg-main: #0b0f14; /* dark navy */
-  --color-bg-elev: #0f1720; /* slightly lighter */
-  --color-text-main: #e6eef8; /* soft white */
-  --color-text-sub: #9fb4c8; /* muted cyan */
-  --color-accent: #7dd3fc; /* bright cyan accent */
-  --color-accent-2: #a78bfa; /* purple accent */
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-glass: rgba(255, 255, 255, 0.06);
-  --radius: 12px;
+  --color-bg-main: #f8f4ef;
+  --color-bg-elev: #f3e7de;
+  --color-bg-sub: #fffaf5;
+  --color-bg-painted: #f2e3d9;
+  --color-bg-code: #f1e7dd;
+  --color-text-main: #1f1a17;
+  --color-text-sub: #5d4f46;
+  --color-text-unpainted: #ffffff;
+  --color-text-error: #b34747;
+  --color-accent: #d19274;
+  --color-accent-2: #b28bc5;
+  --color-button-primary: #c87f5a;
+  --color-border: rgba(31, 26, 23, 0.12);
+  --color-border-right: rgba(31, 26, 23, 0.08);
+  --color-glass: rgba(255, 255, 255, 0.55);
+  --border-radius: 14px;
+  --radius: 14px;
 }
 
 * {
@@ -30,11 +38,9 @@ body {
 body {
   font-family: var(--font-sans);
   color: var(--color-text-main);
-  background: linear-gradient(
-    180deg,
-    var(--color-bg-main),
-    var(--color-bg-elev)
-  );
+  background: radial-gradient(circle at 20% 20%, #fffaf5 0%, #f8f4ef 38%, transparent 62%),
+    radial-gradient(circle at 82% 4%, #f3dfd1 0%, #f3dfd1 32%, transparent 64%),
+    linear-gradient(180deg, var(--color-bg-main), var(--color-bg-elev));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;

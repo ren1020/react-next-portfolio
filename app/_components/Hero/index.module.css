@@ -8,6 +8,10 @@
   min-height: 520px;
 }
 
+.noBg {
+  background: linear-gradient(160deg, #fefdfb 0%, #f7f2eb 60%, #f3ede4 100%);
+}
+
 .inner {
   max-width: 960px;
   text-align: center;

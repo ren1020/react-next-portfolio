@@ -1,15 +1,24 @@
 .button {
-  display: block;
-  padding: 20px 40px;
-  border-radius: var(--border-radius);
-  width: 300px;
-  background: url("/arrow-right.svg") no-repeat right 20px center,
-    var(--color-button-primary);
-  color: var(--color-text-unpainted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  min-width: 0;
+  background: linear-gradient(120deg, #c87f5a 0%, #e6b197 100%);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  box-shadow: 0 10px 24px rgba(200, 127, 90, 0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
 }
 
 .button:hover {
-  opacity: 0.9;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(200, 127, 90, 0.24);
 }
 
 @media (max-width: 640px) {

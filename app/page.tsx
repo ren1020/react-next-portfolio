@@ -8,22 +8,8 @@ export default function Home() {
     <main className={styles.page}>
       <section className={styles.welcome}>
         <div className={styles.welcomeInner}>
-          <p className={styles.kicker}>Welcome to My Portfolio</p>
-          <h1 className={styles.title}>Hello</h1>
-          <p className={styles.description}>
-            ポートフォリオへようこそ。明るく使いやすいフロントエンド体験をつくる
-            ことに、心を込めて取り組んでいます。
-          </p>
-          <p className={styles.description}>
-            Next.js と TypeScript を軸に、設計から実装・改善まで。
-            ユーザーの笑顔が見える UI/UX をめざします。
-          </p>
-          <div className={styles.tags}>
-            <span>Next.js</span>
-            <span>TypeScript</span>
-            <span>UI/UX Design</span>
-          </div>
-          <p className={styles.scrollHint}>下へスクロール →</p>
+          <h1 className={styles.welcomeTitle}>Portfolio</h1>
+          <h1 className={styles.welcomeSubtitle}>ご覧いただきありがとうございます</h1>
         </div>
       </section>
 
@@ -52,6 +38,20 @@ export default function Home() {
         </div>
         <div className={styles.panelAction}>
           <ButtonLink href="/blog">Blog</ButtonLink>
+        </div>
+      </section>
+
+      <section className={styles.panel}>
+        <div className={styles.panelHeader}>
+          <p className={styles.sectionKicker}>CONTACT</p>
+          <h2 className={styles.sectionTitle}>お問い合わせ</h2>
+          <p className={styles.sectionLead}>
+            制作のご依頼やご相談はお気軽にご連絡ください。目的やイメージを伺い、
+            最適な進め方をご提案します。
+          </p>
+        </div>
+        <div className={styles.panelAction}>
+          <ButtonLink href="/contact">Contact</ButtonLink>
         </div>
       </section>
     </main>

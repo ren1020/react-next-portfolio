@@ -18,14 +18,19 @@
   width: 240px;
   height: auto;
   border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
 }
 
 .imagePlaceholder {
   width: 240px;
   height: 180px;
   border-radius: var(--border-radius);
-  background: var(--color-bg-sub);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--color-text-sub);
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
   display: grid;
   place-items: center;
   font-size: 0.9rem;
