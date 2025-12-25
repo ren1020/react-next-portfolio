@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBlogBySlug } from "@/app/_libs/microcms";
+import { getBlogDetail } from "@/app/_libs/microcms";
 import Article from "@/app/_components/Article";
 import ButtonLink from "@/app/_components/ButtonLink";
 import styles from "./page.module.css";
 
 type Props = {
   params: {
-    slug: string;
+    id: string;
   };
   searchParams: {
     dk?: string;
@@ -19,7 +19,7 @@ export async function generateMetadata({
   searchParams,
 }: Props): Promise<Metadata> {
   try {
-    const data = await getBlogBySlug(params.slug, {
+    const data = await getBlogDetail(params.id, {
       draftKey: searchParams.dk,
     });
 
@@ -39,7 +39,7 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params, searchParams }: Props) {
-  const data = await getBlogBySlug(params.slug, {
+  const data = await getBlogDetail(params.id, {
     draftKey: searchParams.dk,
   }).catch(() => notFound());
 

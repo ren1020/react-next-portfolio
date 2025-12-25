@@ -6,15 +6,15 @@ import Footer from "./_components/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
   title: {
-    template: "%s | シンプルなコーポレートサイト",
-    default: "シンプルなコーポレートサイト",
+    template: "%s | Portfolio",
+    default: "Portfolio",
   },
   description:
-    "『Next.js+ヘッドレスCMSではじめる!かんたん・モダンWebサイト制作入門』で作成されるサイトです。",
+    "学びや制作の気づきをまとめたポートフォリオサイトです。",
   openGraph: {
-    title: "シンプルなコーポレートサイト",
+    title: "Portfolio",
     description:
-      "『Next.js+ヘッドレスCMSではじめる!かんたん・モダンWebサイト制作入門』で作成されるサイトです。",
+      "学びや制作の気づきをまとめたポートフォリオサイトです。",
     images: ["/ogp.png"],
   },
   alternates: {

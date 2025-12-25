@@ -1,10 +1,17 @@
 import styles from "./page.module.css";
 import ProfileAvatar from "@/app/_components/ProfileAvatar";
 import ButtonLink from "@/app/_components/ButtonLink";
+import { getBlogList } from "@/app/_libs/microcms";
+import Link from "next/link";
+import Category from "@/app/_components/Category";
+import Date from "@/app/_components/Date";
 
 export const revalidate = 60;
 
-export default function Home() {
+export default async function Home() {
+  const { contents: blogs } = await getBlogList({
+    limit: 3,
+  });
   return (
     <main className={styles.page}>
       <section className={styles.welcome}>
@@ -38,14 +45,26 @@ export default function Home() {
       <section className={styles.panel}>
         <div className={styles.panelHeader}>
           <p className={styles.sectionKicker}>BLOG</p>
-          <h2 className={styles.sectionTitle}>ブログを読む</h2>
+          <h2 className={styles.sectionTitle}>ブログ</h2>
           <p className={styles.sectionLead}>
-            学びや制作の気づきをブログにまとめています。実装の工夫や振り返りを
-            ぜひチェックしてください。
+            学びや制作の気づきをブログにまとめています。
           </p>
         </div>
+        <ul className={styles.blogList}>
+          {blogs.map((blog) => (
+            <li key={blog.id} className={styles.blogItem}>
+              <Link href={`/blog/${blog.id}`} className={styles.blogLink}>
+                <span className={styles.blogTitle}>{blog.title}</span>
+                <div className={styles.blogMeta}>
+                  <Category category={blog.category} />
+                  <Date date={blog.publishedAt ?? blog.createdAt} />
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
         <div className={styles.panelAction}>
-          <ButtonLink href="/blog">Blog</ButtonLink>
+          <ButtonLink href="/blog">もっと見る</ButtonLink>
         </div>
       </section>
 

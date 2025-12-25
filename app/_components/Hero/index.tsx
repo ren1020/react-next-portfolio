@@ -33,8 +33,8 @@ export default function Hero({ title, sub, withBackground = true }: Props) {
           <Link href="/contact" className={styles.btn}>
             お問い合わせ
           </Link>
-          <Link href="/news" className={styles.btn}>
-            最新情報を見る
+          <Link href="/blog" className={styles.btn}>
+            ブログ一覧へ
           </Link>
         </div>
       </div>
