@@ -43,7 +43,7 @@ export default async function Page() {
   try {
     const data = await getCareerList({
       limit: CAREERS_LIST_LIMIT,
-      orders: "-startDate",
+      orders: "time",
     });
     careers = data.contents ?? [];
   } catch (e) {
@@ -113,23 +113,15 @@ export default async function Page() {
           <p className={styles.empty}>経歴はまだ登録されていません。</p>
         ) : (
           <ul className={styles.careerList}>
-            {careers.map((item) => (
+            {careers.map((item, index) => (
               <li key={item.id} className={styles.careerItem}>
-                <div className={styles.careerHeader}>
-                  <div className={styles.careerCompany}>{item.company}</div>
-                  <div className={styles.careerPeriod}>
-                    {item.startDate && (
-                      <>
-                        <span>{item.startDate}</span>
-                        {item.endDate && <span> - {item.endDate}</span>}
-                      </>
-                    )}
-                  </div>
+                <div className={styles.careerDot}></div>
+                <div className={styles.careerContent}>
+                  {item.time && (
+                    <div className={styles.careerTime}>{formatDate(item.time)}</div>
+                  )}
+                  <div className={styles.careerName}>{item.name}</div>
                 </div>
-                <div className={styles.careerPosition}>{item.position}</div>
-                {item.description && (
-                  <div className={styles.careerDescription}>{item.description}</div>
-                )}
               </li>
             ))}
           </ul>

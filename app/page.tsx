@@ -32,7 +32,6 @@ export default async function Home() {
           />
           <div className={styles.panelHeader}>
             <p className={styles.sectionKicker}>PROFILE</p>
-            <h2 className={styles.sectionTitle}>プロフィール</h2>
             <p className={styles.sectionLead}>
               経歴や資格、取り組んできた内容をまとめています。</p>
           </div>
@@ -45,7 +44,6 @@ export default async function Home() {
       <section className={styles.panel}>
         <div className={styles.panelHeader}>
           <p className={styles.sectionKicker}>BLOG</p>
-          <h2 className={styles.sectionTitle}>ブログ</h2>
           <p className={styles.sectionLead}>
             学びや制作の気づきをブログにまとめています。
           </p>
@@ -71,7 +69,6 @@ export default async function Home() {
       <section className={styles.panel}>
         <div className={styles.panelHeader}>
           <p className={styles.sectionKicker}>CONTACT</p>
-          <h2 className={styles.sectionTitle}>お問い合わせ</h2>
           <p className={styles.sectionLead}>
             制作のご依頼やご相談はお気軽にご連絡ください。目的やイメージを伺い、
             最適な進め方をご提案します。

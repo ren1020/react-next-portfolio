@@ -20,11 +20,8 @@ export type Qualification = {
 } & MicroCMSListContent;
 
 export type Career = {
-  company: string;
-  position: string;
-  description?: string;
-  startDate?: string;
-  endDate?: string;
+  name: string;
+  time?: string;
 } & MicroCMSListContent;
 
 export type Category = {
