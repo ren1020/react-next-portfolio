@@ -1,19 +1,53 @@
 import Image from "next/image";
-import { getMembersList } from "@/app/_libs/microcms";
-import { MEMBERS_LIST_LIMIT } from "@/app/_constants";
+import Link from "next/link";
+import { formatDate } from "@/app/_libs/utils";
+import {
+  getMembersList,
+  getQualificationsList,
+  getCareerList,
+} from "@/app/_libs/microcms";
+import {
+  MEMBERS_LIST_LIMIT,
+  QUALIFICATIONS_LIST_LIMIT,
+  CAREERS_LIST_LIMIT,
+} from "@/app/_constants";
 import styles from "./page.module.css";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function Page() {
   let contents = [] as Awaited<ReturnType<typeof getMembersList>>['contents'];
+  let qualifications = [] as Awaited<ReturnType<typeof getQualificationsList>>['contents'];
+  let careers = [] as Awaited<ReturnType<typeof getCareerList>>['contents'];
   let hasError = false;
+  let qualError = false;
+  let careerError = false;
 
   try {
     const data = await getMembersList({ limit: MEMBERS_LIST_LIMIT });
     contents = data.contents ?? [];
   } catch (e) {
     hasError = true;
+  }
+
+  try {
+    const data = await getQualificationsList({
+      limit: QUALIFICATIONS_LIST_LIMIT,
+      orders: "-issuedAt",
+    });
+    qualifications = data.contents ?? [];
+  } catch (e) {
+    qualError = true;
+  }
+
+  try {
+    const data = await getCareerList({
+      limit: CAREERS_LIST_LIMIT,
+      orders: "-startDate",
+    });
+    careers = data.contents ?? [];
+  } catch (e) {
+    careerError = true;
   }
 
   return (
@@ -46,6 +80,61 @@ export default async function Page() {
           ))}
         </ul>
       )}
+      <section className={styles.qualifications}>
+        <h2 className={styles.sectionTitle}>資格</h2>
+        {qualError ? (
+          <p className={styles.empty}>資格の取得に失敗しました。しばらくしてから再度お試しください。</p>
+        ) : qualifications.length === 0 ? (
+          <p className={styles.empty}>資格はまだ登録されていません。</p>
+        ) : (
+          <ul className={styles.qualList}>
+            {qualifications.map((item) => (
+              <Link
+                key={item.id}
+                href={`/Profile/qualifications/${item.id}`}
+                className={styles.qualLink}
+              >
+                <li className={styles.qualItem}>
+                  <div className={styles.qualName}>{item.qualifications}</div>
+                  {item.time && (
+                    <div className={styles.qualTime}>{formatDate(item.time)}</div>
+                  )}
+                </li>
+              </Link>
+            ))}
+          </ul>
+        )}
+      </section>
+      <section className={styles.careers}>
+        <h2 className={styles.sectionTitle}>経歴</h2>
+        {careerError ? (
+          <p className={styles.empty}>経歴の取得に失敗しました。しばらくしてから再度お試しください。</p>
+        ) : careers.length === 0 ? (
+          <p className={styles.empty}>経歴はまだ登録されていません。</p>
+        ) : (
+          <ul className={styles.careerList}>
+            {careers.map((item) => (
+              <li key={item.id} className={styles.careerItem}>
+                <div className={styles.careerHeader}>
+                  <div className={styles.careerCompany}>{item.company}</div>
+                  <div className={styles.careerPeriod}>
+                    {item.startDate && (
+                      <>
+                        <span>{item.startDate}</span>
+                        {item.endDate && <span> - {item.endDate}</span>}
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div className={styles.careerPosition}>{item.position}</div>
+                {item.description && (
+                  <div className={styles.careerDescription}>{item.description}</div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </div>
   );
 }

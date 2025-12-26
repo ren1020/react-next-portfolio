@@ -12,6 +12,21 @@ export type Member = {
   image: MicroCMSImage;
 } & MicroCMSListContent;
 
+export type Qualification = {
+  qualifications: string;
+  time?: string;
+  description?: string;
+  thumbnail?: string;
+} & MicroCMSListContent;
+
+export type Career = {
+  company: string;
+  position: string;
+  description?: string;
+  startDate?: string;
+  endDate?: string;
+} & MicroCMSListContent;
+
 export type Category = {
   name: string;
 } & MicroCMSListContent;
@@ -20,6 +35,7 @@ export type Blog = {
   title: string;
   description: string;
   content: string;
+  time?: string;
   thumbnail?: MicroCMSImage;
   category?: Category | null;
 } & MicroCMSListContent;
@@ -45,10 +61,35 @@ export const getMembersList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
+export const getQualificationsList = async (queries?: MicroCMSQueries) => {
+  const listData = await client.getList<Qualification>({
+    endpoint: "qualifications",
+    queries,
+    customRequestInit: {
+      next: { revalidate: 0 },
+    },
+  });
+  return listData;
+};
+
+export const getCareerList = async (queries?: MicroCMSQueries) => {
+  const listData = await client.getList<Career>({
+    endpoint: "careers",
+    queries,
+    customRequestInit: {
+      next: { revalidate: 0 },
+    },
+  });
+  return listData;
+};
+
 export const getBlogList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Blog>({
     endpoint: "blog",
     queries,
+    customRequestInit: {
+      next: { revalidate: 60 },
+    },
   });
   return listData;
 };
@@ -61,6 +102,9 @@ export const getBlogDetail = async (
     endpoint: "blog",
     contentId,
     queries,
+    customRequestInit: {
+      next: { revalidate: 60 },
+    },
   });
   return detaiData;
 };
@@ -84,6 +128,9 @@ export const getBlogBySlug = async (
       filters,
       limit: 1,
     } as unknown as MicroCMSQueries,
+    customRequestInit: {
+      next: { revalidate: 60 },
+    },
   });
 
   if (!listData.contents || listData.contents.length === 0) {

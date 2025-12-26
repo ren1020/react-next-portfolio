@@ -57,7 +57,7 @@ export default async function Home() {
                 <span className={styles.blogTitle}>{blog.title}</span>
                 <div className={styles.blogMeta}>
                   <Category category={blog.category} />
-                  <Date date={blog.publishedAt ?? blog.createdAt} />
+                  <Date date={blog.time ?? blog.publishedAt ?? blog.createdAt} />
                 </div>
               </Link>
             </li>
