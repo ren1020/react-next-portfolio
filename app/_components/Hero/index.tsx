@@ -6,9 +6,14 @@ type Props = {
   title: string;
   sub: string;
   withBackground?: boolean;
+  currentPage?: "home" | "blog" | "contact" | "profile";
 };
 
-export default function Hero({ title, sub, withBackground = true }: Props) {
+export default function Hero({ title, sub, withBackground = true, currentPage }: Props) {
+  const showProfile = currentPage !== "profile";
+  const showBlog = currentPage !== "blog";
+  const showContact = currentPage !== "contact";
+
   return (
     <section
       className={`${styles.container} ${!withBackground ? styles.noBg : ""}`.trim()}
@@ -30,12 +35,21 @@ export default function Hero({ title, sub, withBackground = true }: Props) {
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.sub}>{sub}</p>
         <div className={styles.ctaGroup}>
-          <Link href="/contact" className={styles.btn}>
-            お問い合わせ
-          </Link>
-          <Link href="/blog" className={styles.btn}>
-            ブログ一覧へ
-          </Link>
+          {showProfile && (
+            <Link href="/Profile" className={styles.btn}>
+              プロフィール
+            </Link>
+          )}
+          {showBlog && (
+            <Link href="/blog" className={styles.btn}>
+              ブログ一覧
+            </Link>
+          )}
+          {showContact && (
+            <Link href="/contact" className={styles.btn}>
+              お問い合わせ
+            </Link>
+          )}
         </div>
       </div>
     </section>

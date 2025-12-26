@@ -26,8 +26,10 @@
 
 .thumbnail {
   width: 100%;
+  max-width: 600px;
   height: auto;
-  margin-bottom: 64px;
+  margin: 0 auto 64px;
+  border-radius: 12px;
 }
 
 .content *:first-child {

@@ -14,7 +14,7 @@ export const revalidate = 60;
 export default function BlogLayout({ children }: Props) {
     return (
         <>
-        <Hero title="BLOG" sub="ブログ" withBackground={false} />
+        <Hero title="BLOG" sub="ブログ" withBackground={false} currentPage="blog" />
         <Sheet>{children}</Sheet>
         </>
     );
