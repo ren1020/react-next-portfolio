@@ -24,6 +24,7 @@ export default async function Page({ params }: Props) {
         filters: `category[equals]${category.id}`,
         limit: BLOG_LIST_LIMIT,
         offset: BLOG_LIST_LIMIT * (current - 1),
+        orders: "-time",
     });
         
     if (blogs.length === 0) {

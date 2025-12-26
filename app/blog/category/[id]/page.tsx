@@ -17,6 +17,7 @@ export default async function Page({ params }: Props) {
     const { contents: blogs, totalCount } = await getBlogList({
         limit: BLOG_LIST_LIMIT,
         filters: `category[equals]${category.id}`,
+        orders: "-time",
     })
 
     return (

@@ -14,6 +14,7 @@ export default async function Page({ searchParams }: Props) {
     const { contents: blogs }= await getBlogList({
         limit: BLOG_LIST_LIMIT,
         q: searchParams.q,
+        orders: "-time",
     });
 
     return (

@@ -7,6 +7,7 @@ import { BLOG_LIST_LIMIT } from "@/app/_constants";
 export default async function Page() {
     const { contents: blogs, totalCount } = await getBlogList({
         limit: BLOG_LIST_LIMIT,
+        orders: "-time",
     });
 
     return (

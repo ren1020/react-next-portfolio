@@ -20,6 +20,7 @@ export default async function Page({ params }: Props) {
     const { contents: blogs, totalCount } = await getBlogList({
         limit: BLOG_LIST_LIMIT,
         offset: BLOG_LIST_LIMIT * (current - 1),
+        orders: "-time",
     });
 
     if (blogs.length === 0) {
