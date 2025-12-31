@@ -34,6 +34,7 @@ export type Blog = {
   content: string;
   time?: string;
   thumbnail?: MicroCMSImage;
+  videoUrl?: string;
   category?: Category | null;
 } & MicroCMSListContent;
 
