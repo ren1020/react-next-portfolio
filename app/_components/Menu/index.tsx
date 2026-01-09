@@ -3,15 +3,22 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import cx from "classnames";
 import styles from "./index.module.css";
 
 export default function Menu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   
   const toggle = () => setIsOpen((prev) => !prev);
   const close = () => setIsOpen(false);
+
+  // パス変更時にメニューを閉じる
+  useEffect(() => {
+    close();
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
