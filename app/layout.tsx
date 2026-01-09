@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
+import PageTransition from "./_components/PageTransition";
+import PageLoader from "./_components/PageLoader";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -30,9 +32,12 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="app">
-        <Header />
-        {children}
-        <Footer />
+        <PageLoader />
+        <PageTransition>
+          <Header />
+          {children}
+          <Footer />
+        </PageTransition>
       </body>
     </html>
   );
