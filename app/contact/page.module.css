@@ -3,6 +3,25 @@
   margin-bottom: 40px;
 }
 
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.pageTopBar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
 @media (max-width: 640px) {
   .text {
     text-align: left;

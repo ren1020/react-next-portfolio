@@ -4,6 +4,7 @@ import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import PageTransition from "./_components/PageTransition";
 import PageLoader from "./_components/PageLoader";
+import BackgroundDots from "./_components/BackgroundDots";
 
 export const metadata: Metadata = {
   metadataBase: new URL("http://localhost:3000"),
@@ -11,12 +12,10 @@ export const metadata: Metadata = {
     template: "%s | Portfolio",
     default: "Portfolio",
   },
-  description:
-    "学びや制作の気づきをまとめたポートフォリオサイトです。",
+  description: "学びや制作の気づきをまとめたポートフォリオサイトです。",
   openGraph: {
     title: "Portfolio",
-    description:
-      "学びや制作の気づきをまとめたポートフォリオサイトです。",
+    description: "学びや制作の気づきをまとめたポートフォリオサイトです。",
     images: ["/ogp.png"],
   },
   alternates: {
@@ -33,11 +32,14 @@ export default function RootLayout({
     <html lang="ja">
       <body className="app">
         <PageLoader />
-        <PageTransition>
-          <Header />
-          {children}
-          <Footer />
-        </PageTransition>
+        <BackgroundDots />
+        <div className="content">
+          <PageTransition>
+            <Header />
+            {children}
+            <Footer />
+          </PageTransition>
+        </div>
       </body>
     </html>
   );

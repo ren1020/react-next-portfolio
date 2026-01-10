@@ -13,6 +13,14 @@ export async function createContactData(_prevent: any, formData: FormData) {
     email: formData.get("email") as string,
     message: formData.get("message") as string,
   };
+  // honeypot check: if filled, treat as spam
+  const hp = formData.get("hp") as string;
+  if (hp) {
+    return {
+      status: "error",
+      message: "不正な入力が検出されました。",
+    };
+  }
   if (!rawFormData.lastname) {
     return {
       status: "error",

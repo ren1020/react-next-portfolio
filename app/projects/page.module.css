@@ -1,0 +1,128 @@
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.title {
+  font-size: 28px;
+  margin: 0 0 8px 0;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.card {
+  background: linear-gradient(180deg, #fffefc 0%, var(--color-bg-sub) 100%);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  overflow: hidden;
+  display: block;
+  border: 1px solid var(--color-border);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.media {
+  position: relative;
+  min-height: 140px;
+  max-height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.cardImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cardBody {
+  padding: 6px 0;
+}
+
+.cardTitle {
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+}
+
+.cardSummary {
+  color: var(--color-text-sub);
+  margin: 0 0 12px 0;
+}
+
+.tech {
+  font-size: 13px;
+  color: var(--color-text-muted, #666);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chip {
+  background: rgba(200, 127, 90, 0.08);
+  color: var(--color-accent);
+  padding: 6px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.cardFooter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 14px;
+}
+.cardButton {
+  background: var(--color-button-primary);
+  color: var(--color-text-unpainted);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.badge {
+  font-size: 13px;
+  color: var(--color-text-sub);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 24px 12px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+  .media {
+    max-height: 180px;
+  }
+  .cardBody {
+    padding: 14px;
+  }
+}

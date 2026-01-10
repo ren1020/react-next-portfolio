@@ -1,0 +1,29 @@
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.title {
+  font-size: 26px;
+  margin: 0 0 8px 0;
+}
+
+.meta {
+  color: var(--color-text-muted, #666);
+  margin-bottom: 16px;
+}
+
+.description {
+  line-height: 1.8;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--color-link, #0b74de);
+}

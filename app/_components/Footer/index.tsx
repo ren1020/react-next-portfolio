@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./index.module.css";
 
 export default function Footer() {
@@ -8,6 +9,9 @@ export default function Footer() {
         <ul className={styles.items}>
           <li className={styles.item}>
             <Link href="/Profile">Profile</Link>
+          </li>
+          <li className={styles.item}>
+            <Link href="/projects">Projects</Link>
           </li>
           <li className={styles.item}>
             <Link href="/blog">Blog</Link>
@@ -24,7 +28,13 @@ export default function Footer() {
           rel="noreferrer"
           className={styles.socialLink}
         >
-          <img src="/icons/instagram.svg" alt="" className={styles.socialIcon} aria-hidden />
+          <Image
+            src="/icons/instagram.svg"
+            alt=""
+            width={24}
+            height={24}
+            className={styles.socialIcon}
+          />
           <span className={styles.srOnly}>Instagram</span>
         </a>
         <a
@@ -33,7 +43,13 @@ export default function Footer() {
           rel="noreferrer"
           className={styles.socialLink}
         >
-          <img src="/icons/github.svg" alt="" className={styles.socialIcon} aria-hidden />
+          <Image
+            src="/icons/github.svg"
+            alt=""
+            width={24}
+            height={24}
+            className={styles.socialIcon}
+          />
           <span className={styles.srOnly}>GitHub</span>
         </a>
       </div>

@@ -11,7 +11,7 @@ export default function Menu() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  
+
   const toggle = () => setIsOpen((prev) => !prev);
   const close = () => setIsOpen(false);
 
@@ -22,7 +22,10 @@ export default function Menu() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
         close();
       }
     };
@@ -41,6 +44,9 @@ export default function Menu() {
         <ul className={styles.items}>
           <li>
             <Link href="/Profile">Profile</Link>
+          </li>
+          <li>
+            <Link href="/projects">Projects</Link>
           </li>
           <li>
             <Link href="/blog">Blog</Link>

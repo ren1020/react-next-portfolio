@@ -44,6 +44,15 @@
   width: 100%;
 }
 
+/* hide honeypot off-screen */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .actions {
   text-align: center;
   margin-top: 40px;

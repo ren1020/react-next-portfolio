@@ -1,0 +1,54 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  /* bring dots above content when requested; keep interactions working through */
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(8px) drop-shadow(0 6px 18px rgba(0, 0, 0, 0.08));
+  mix-blend-mode: screen;
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+  animation-name: floatMove;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatMove {
+  0% {
+    transform: translate(-50%, -50%) translateY(0) rotate(0deg) scale(0.9);
+    opacity: 0;
+    filter: blur(6px) brightness(0.9);
+  }
+  20% {
+    transform: translate(-50%, -50%) translateY(-28px) rotate(25deg) scale(1.06);
+    opacity: 0.22;
+    filter: blur(6px) brightness(1.05);
+  }
+  40% {
+    transform: translate(-50%, -50%) translateX(-18px) rotate(-12deg)
+      scale(0.98);
+    opacity: 0.16;
+    filter: blur(8px) brightness(1.08);
+  }
+  60% {
+    transform: translate(-50%, -50%) translateY(24px) rotate(60deg) scale(1.08);
+    opacity: 0.26;
+    filter: blur(10px) brightness(1.12);
+  }
+  80% {
+    transform: translate(-50%, -50%) translateX(26px) rotate(-40deg) scale(0.96);
+    opacity: 0.18;
+    filter: blur(8px) brightness(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(0) rotate(0deg) scale(0.9);
+    opacity: 0;
+    filter: blur(6px) brightness(0.95);
+  }
+}
