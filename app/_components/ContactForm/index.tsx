@@ -2,11 +2,36 @@
 
 import React from "react";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { createContactData } from "@/app/_actions/contact";
 import { useFormState } from "react-dom";
 import styles from "./index.module.css";
+
+// local zod resolver to avoid package typings/export issues
+const zodResolverLocal = <TSchema extends z.ZodTypeAny>(schema: TSchema) => {
+  return async (values: any) => {
+    try {
+      const parsed = schema.parse(values);
+      return { values: parsed, errors: {} };
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        const fieldErrors: Record<string, any> = {};
+        err.errors.forEach((e) => {
+          const key = (e.path && e.path[0]) || "_error";
+          fieldErrors[key] = {
+            type: e.code || "validation",
+            message: e.message,
+          };
+        });
+        return { values: {}, errors: fieldErrors };
+      }
+      return {
+        values: {},
+        errors: { _error: { type: "validation", message: "Validation error" } },
+      };
+    }
+  };
+};
 
 const initialState = {
   status: "",
@@ -30,7 +55,7 @@ export default function ContactForm() {
     register,
     trigger,
     formState: { errors },
-  } = useForm<ContactFormValues>({ resolver: zodResolver(ContactSchema) });
+  } = useForm<ContactFormValues>({ resolver: zodResolverLocal(ContactSchema) });
 
   // We validate with react-hook-form/zod, then if valid submit the native form
   const handleClientValidate = async (e: React.FormEvent<HTMLFormElement>) => {
