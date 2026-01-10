@@ -6,17 +6,25 @@ type Props = {
   title: string;
   sub: string;
   withBackground?: boolean;
-  currentPage?: "home" | "blog" | "contact" | "profile";
+  currentPage?: "home" | "blog" | "contact" | "profile" | "projects";
 };
 
-export default function Hero({ title, sub, withBackground = true, currentPage }: Props) {
+export default function Hero({
+  title,
+  sub,
+  withBackground = true,
+  currentPage,
+}: Props) {
   const showProfile = currentPage !== "profile";
   const showBlog = currentPage !== "blog";
   const showContact = currentPage !== "contact";
+  const showProjects = currentPage !== "projects";
 
   return (
     <section
-      className={`${styles.container} ${!withBackground ? styles.noBg : ""}`.trim()}
+      className={`${styles.container} ${
+        !withBackground ? styles.noBg : ""
+      }`.trim()}
     >
       {withBackground && (
         <>
@@ -38,6 +46,11 @@ export default function Hero({ title, sub, withBackground = true, currentPage }:
           {showProfile && (
             <Link href="/Profile" className={styles.btn}>
               プロフィール
+            </Link>
+          )}
+          {showProjects && (
+            <Link href="/projects" className={styles.btn}>
+              作品一覧へ
             </Link>
           )}
           {showBlog && (

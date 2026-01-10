@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import profileStyles from "@/app/Profile/page.module.css";
+import Hero from "@/app/_components/Hero";
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "./data";
@@ -7,6 +8,12 @@ import { projects } from "./data";
 export default function ProjectsPage() {
   return (
     <main className={styles.page}>
+      <Hero
+        title="Projects"
+        sub="作品一覧"
+        withBackground={false}
+        currentPage="projects"
+      />
       <header className={styles.header}>
         <h1 className={styles.title}>作品 / Projects</h1>
       </header>
