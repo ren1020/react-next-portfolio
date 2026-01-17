@@ -15,10 +15,9 @@ export type Member = {
 export const members: Member[] = [
   {
     id: "ren-okita",
-    name: "Ren Okita",
-    position: "Web Developer",
+    name: "沖田 蓮",
     profile:
-      "フロントエンドを中心に、ユーザーに寄り添うUI設計と実装を得意としています。React / Next.js を用いた制作経験があり、パフォーマンスとアクセシビリティを重視したコーディングを心がけています。",
+      "京都デザイン専門学校ホワイトハッカー専攻で勉強しながらアルバイトに明け暮れてる人間です。高校一年からアルバイトをしているから人よりは社会に慣れてるはず…？",
     image: "/profile.png",
   },
 ];

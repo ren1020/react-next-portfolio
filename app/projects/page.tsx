@@ -1,8 +1,6 @@
 import styles from "./page.module.css";
 import profileStyles from "@/app/Profile/page.module.css";
 import blogStyles from "@/app/_components/BlogList/index.module.css";
-import Hero from "@/app/_components/Hero";
-import ButtonLink from "@/app/_components/ButtonLink";
 import Link from "next/link";
 import Image from "next/image";
 import { getProjectsList } from "@/app/_libs/microcms";
@@ -15,29 +13,15 @@ export default async function ProjectsPage() {
 
   return (
     <main className={styles.page}>
-      <Hero
-        title="Projects"
-        sub="作品一覧"
-        withBackground={false}
-        currentPage="projects"
-      />
+      {/* Hero はレイアウト側で表示しているためここでは見出しをコンテンツ外に表示 */}
+      <div className={profileStyles.container} style={{ margin: "8px 0" }}>
+        <h2 style={{ margin: 0, fontSize: "1.4rem" }}>Projects</h2>
+      </div>
 
       <section>
         <div className={profileStyles.container}>
           <div className={styles.card}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: 16,
-              }}
-            >
-              <h1 style={{ margin: 0, fontSize: "1.6rem" }}>Projects</h1>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <ButtonLink href="/projects">作品一覧へ</ButtonLink>
-              </div>
-            </div>
+            {/* spacing adjusted: removed empty wrapper to reduce vertical space */}
 
             <ul className={blogStyles.list}>
               {projects.map((p) => (
@@ -71,15 +55,7 @@ export default async function ProjectsPage() {
               ))}
             </ul>
           </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              marginTop: 16,
-            }}
-          >
-            <ButtonLink href="/projects">もっと見る</ButtonLink>
-          </div>
+          {/* ページ上部の Hero にナビがあるため、ここでの重複リンクは不要 */}
         </div>
       </section>
     </main>

@@ -15,7 +15,7 @@ export default function ProjectsLayout({ children }: Props) {
   return (
     <>
       <Hero
-        title="PROJECTS"
+        title="Projects"
         sub="作品一覧"
         withBackground={false}
         currentPage="projects"
