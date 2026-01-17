@@ -47,7 +47,8 @@ export default async function ProjectDetail({ params, searchParams }: Props) {
 
   return (
     <>
-      <Article data={articleLike} />
+      {/* Projects shouldn't show blog categories */}
+      <Article data={articleLike} showCategory={false} />
       <div className={styles.footer}>
         <ButtonLink href="/projects">作品一覧へ</ButtonLink>
       </div>
