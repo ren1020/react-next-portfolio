@@ -29,7 +29,7 @@ export default function RandomCat() {
 
     // 定期的に猫を表示（30-60秒間隔）
     const interval = setInterval(() => {
-      if (Math.random() > 0.3) { // 70%の確率で表示
+      if (Math.random() > 0.15) { // 85%の確率で表示
         showCat();
       }
     }, Math.random() * 30000 + 30000);
