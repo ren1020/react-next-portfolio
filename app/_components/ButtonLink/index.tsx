@@ -1,3 +1,4 @@
+"use client";
 import styles from "./index.module.css";
 
 type Props = {
@@ -8,7 +9,8 @@ type Props = {
 export default function ButtonLink({ href, children }: Props) {
     return (
         <a href={href} className={styles.button}>
-            {children}
+            <span className={styles.buttonText}>{children}</span>
+            <span className={styles.buttonRipple}></span>
         </a>
     );
 }

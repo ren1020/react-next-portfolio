@@ -9,6 +9,9 @@ import Category from "@/app/_components/Category";
 import Date from "@/app/_components/Date";
 import AnimatedSection from "@/app/_components/AnimatedSection";
 import { getProjectsList } from "@/app/_libs/microcms";
+import BackgroundDots from "@/app/_components/BackgroundDots";
+import ParallaxEffect from "@/app/_components/ParallaxEffect";
+import RandomCat from "@/app/_components/RandomCat";
 
 export const revalidate = 60;
 
@@ -32,13 +35,21 @@ export default async function Home() {
 
   return (
     <main className={styles.page}>
+      <BackgroundDots />
+      <ParallaxEffect />
+      <RandomCat />
       {/* ========== セクション 1: ウェルカム ==========*/}
       <section className={styles.welcome}>
         <div className={styles.welcomeInner}>
-          <h1 className={styles.welcomeTitle}>Portfolio</h1>
-          <h1 className={styles.welcomeSubtitle}>
+          <h1 className={`${styles.welcomeTitle} ${styles.parallaxTitle}`}>Portfolio</h1>
+          <h1 className={`${styles.welcomeSubtitle} ${styles.parallaxSubtitle}`}>
             ご覧いただきありがとうございます
           </h1>
+          <div className={styles.scrollIndicator}>
+            <div className={styles.scrollMouse}>
+              <div className={styles.scrollWheel}></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -80,10 +91,10 @@ export default async function Home() {
               {projects.map((p, index) => (
                 <li
                   key={p.id}
-                  className={styles.blogItem}
+                  className={`${styles.blogItem} ${styles.cardHover}`}
                   style={{ animationDelay: `${index * 0.08}s` }}
                 >
-                  <Link href={`/projects/${p.id}`} className={styles.blogLink}>
+                  <Link href={`/projects/${p.id}`} className={`${styles.blogLink} ${styles.projectCard}`}>
                     {(p as any).thumbnail ? (
                       <Image
                         src={(p as any).thumbnail.url}
@@ -129,10 +140,10 @@ export default async function Home() {
               {blogs.map((blog, index) => (
                 <li
                   key={blog.id}
-                  className={styles.blogItem}
+                  className={`${styles.blogItem} ${styles.cardHover}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <Link href={`/blog/${blog.id}`} className={styles.blogLink}>
+                  <Link href={`/blog/${blog.id}`} className={`${styles.blogLink} ${styles.blogCardLink}`}>
                     <span className={styles.blogTitle}>{blog.title}</span>
                     <div className={styles.blogMeta}>
                       <Category category={blog.category} />

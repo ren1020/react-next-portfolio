@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "./index.module.css";
 
 type Props = {
   className?: string;
@@ -15,7 +16,7 @@ export default function ProfileAvatar({ className, src, alt = "", size = 180, pr
   const finalSrc = useFallback ? "/images/profile-placeholder.svg" : src;
 
   return (
-    <div className={className}>
+    <div className={`${styles.avatarWrapper} ${className || ''}`}>
       <Image
         src={finalSrc}
         alt={alt}
@@ -23,6 +24,7 @@ export default function ProfileAvatar({ className, src, alt = "", size = 180, pr
         height={size}
         priority={priority}
         onError={() => setUseFallback(true)}
+        className={styles.avatar}
       />
     </div>
   );

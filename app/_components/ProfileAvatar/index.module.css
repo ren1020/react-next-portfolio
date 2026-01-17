@@ -1,0 +1,19 @@
+.avatarWrapper {
+  position: relative;
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.avatarWrapper:hover {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.avatar {
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(200, 127, 90, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.avatarWrapper:hover .avatar {
+  box-shadow: 0 12px 36px rgba(200, 127, 90, 0.35);
+}
