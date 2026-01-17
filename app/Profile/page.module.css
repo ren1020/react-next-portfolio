@@ -3,6 +3,31 @@
   margin-bottom: 40px;
 }
 
+/* layout helpers used by Profile page */
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.containerInner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.profileSection {
+  margin-bottom: 48px;
+}
+
+/* main white framed card like blog/projects */
+.card {
+  background: linear-gradient(180deg, #fffefc 0%, #f9f6f1 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  border: 1px solid var(--color-border);
+}
+
 .pageHeader {
   display: flex;
   align-items: center;
@@ -40,8 +65,11 @@
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(135deg, #fefdfb 0%, #f7f2eb 100%);
-  box-shadow: 0 0 0 3px #e3a889, 0 0 0 5px #c87f5a,
-    0 12px 32px rgba(200, 127, 90, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 0 0 3px #e3a889,
+    0 0 0 5px #c87f5a,
+    0 12px 32px rgba(200, 127, 90, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   object-fit: cover;
 }
 
@@ -52,8 +80,11 @@
   border-radius: 50%;
   background: linear-gradient(135deg, #fefdfb 0%, #f7f2eb 100%);
   color: var(--color-text-sub);
-  box-shadow: 0 0 0 3px #e3a889, 0 0 0 5px #c87f5a,
-    0 12px 32px rgba(200, 127, 90, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 0 0 3px #e3a889,
+    0 0 0 5px #c87f5a,
+    0 12px 32px rgba(200, 127, 90, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   display: grid;
   place-items: center;
   font-size: 0.9rem;
@@ -116,7 +147,9 @@
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .qualLink:hover .qualItem {

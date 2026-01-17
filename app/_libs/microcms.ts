@@ -38,6 +38,13 @@ export type Blog = {
   category?: Category | null;
 } & MicroCMSListContent;
 
+export type Project = {
+  name: string;
+  description?: string;
+  content?: string;
+  thumbnail?: MicroCMSImage;
+} & MicroCMSListContent;
+
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
@@ -50,14 +57,6 @@ const client = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
   apiKey: process.env.MICROCMS_API_KEY,
 });
-
-export const getMembersList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Member>({
-    endpoint: "profile",
-    queries,
-  });
-  return listData;
-};
 
 export const getQualificationsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Qualification>({
@@ -92,9 +91,65 @@ export const getBlogList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
+export const getProjectsList = async (queries?: MicroCMSQueries) => {
+  const listData = await client.getList<Project>({
+    endpoint: "projects",
+    queries,
+    customRequestInit: {
+      next: { revalidate: 60 },
+    },
+  });
+  return listData;
+};
+
+export const getProjectDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries,
+) => {
+  const detailData = await client.getListDetail<Project>({
+    endpoint: "projects",
+    contentId,
+    queries,
+    customRequestInit: {
+      next: { revalidate: 60 },
+    },
+  });
+  return detailData;
+};
+
+// helper to get project by slug if you use slug field
+export const getProjectBySlug = async (
+  slug: string,
+  queries?: MicroCMSQueries,
+) => {
+  const existingFilters = (queries as any)?.filters;
+  const slugFilter = `slug[equals]${slug}`;
+  const filters = existingFilters
+    ? `${existingFilters} && ${slugFilter}`
+    : slugFilter;
+
+  const listData = await client.getList<Project>({
+    endpoint: "projects",
+    queries: {
+      ...(queries ?? {}),
+      filters,
+      limit: 1,
+    } as unknown as MicroCMSQueries,
+    customRequestInit: {
+      next: { revalidate: 60 },
+    },
+  });
+
+  if (!listData.contents || listData.contents.length === 0) {
+    throw new Error("NotFound");
+  }
+
+  return listData.contents[0];
+};
+
 export const getBlogDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
 ) => {
   const detaiData = await client.getListDetail<Blog>({
     endpoint: "blog",
@@ -110,7 +165,7 @@ export const getBlogDetail = async (
 // slug から記事を取得するヘルパ（slug を URL に使っている場合はこちらを利用）
 export const getBlogBySlug = async (
   slug: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
 ) => {
   // queries に既に filters がある場合は結合する。簡易実装では既存 filters を上書きしないように組み立てる。
   const existingFilters = (queries as any)?.filters;
@@ -141,7 +196,7 @@ export const getBlogBySlug = async (
 
 export const getCategoryDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
 ) => {
   const detailData = await client.getListDetail<Category>({
     endpoint: "categories",

@@ -1,37 +1,56 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { getProjectDetail } from "@/app/_libs/microcms";
+import Article from "@/app/_components/Article";
+import ButtonLink from "@/app/_components/ButtonLink";
 import styles from "./page.module.css";
-import Link from "next/link";
-import { projects } from "../data";
 
 type Props = {
   params: { id: string };
+  searchParams: { dk?: string };
 };
 
-export default function ProjectDetail({ params }: Props) {
-  const project = projects.find((p) => p.id === params.id);
-  if (!project) return notFound();
+export async function generateMetadata({
+  params,
+  searchParams,
+}: Props): Promise<Metadata> {
+  try {
+    const data = await getProjectDetail(params.id, {
+      draftKey: searchParams.dk,
+    });
+    return {
+      title: data.name,
+      description: data.description ?? undefined,
+      openGraph: {
+        title: data.name,
+        description: data.description ?? undefined,
+        images: [data?.thumbnail?.url ?? ""],
+      },
+    };
+  } catch (e) {
+    notFound();
+  }
+}
+
+export default async function ProjectDetail({ params, searchParams }: Props) {
+  const data = await getProjectDetail(params.id, {
+    draftKey: searchParams.dk,
+  }).catch(() => notFound());
+
+  // Map project fields to the Article component shape
+  const articleLike = {
+    title: (data as any).name,
+    description: (data as any).description ?? "",
+    content: (data as any).content ?? "",
+    thumbnail: (data as any).thumbnail ?? undefined,
+  } as any;
 
   return (
-    <main className={styles.page}>
-      <h1 className={styles.title}>{project.title}</h1>
-      <div className={styles.meta}>{project.tech.join(" ・ ")}</div>
-      <div className={styles.description}>{project.description}</div>
-      <div className={styles.links}>
-        {project.github && (
-          <div>
-            GitHub: <a href={project.github}>{project.github}</a>
-          </div>
-        )}
-        {project.live && (
-          <div>
-            Live: <a href={project.live}>{project.live}</a>
-          </div>
-        )}
+    <>
+      <Article data={articleLike} />
+      <div className={styles.footer}>
+        <ButtonLink href="/projects">作品一覧へ</ButtonLink>
       </div>
-
-      <Link href="/projects" className={styles.back}>
-        ← 作品一覧へ戻る
-      </Link>
-    </main>
+    </>
   );
 }

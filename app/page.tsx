@@ -4,10 +4,11 @@ import ProfileAvatar from "@/app/_components/ProfileAvatar";
 import ButtonLink from "@/app/_components/ButtonLink";
 import { getBlogList } from "@/app/_libs/microcms";
 import Link from "next/link";
+import Image from "next/image";
 import Category from "@/app/_components/Category";
 import Date from "@/app/_components/Date";
 import AnimatedSection from "@/app/_components/AnimatedSection";
-import { projects } from "@/app/projects/data";
+import { getProjectsList } from "@/app/_libs/microcms";
 
 export const revalidate = 60;
 
@@ -26,6 +27,8 @@ export default async function Home() {
     limit: 3,
     orders: "-time",
   });
+  const projData = await getProjectsList({ limit: 3, orders: "-createdAt" });
+  const projects = projData.contents ?? [];
 
   return (
     <main className={styles.page}>
@@ -74,20 +77,33 @@ export default async function Home() {
               </p>
             </div>
             <ul className={styles.blogList}>
-              {projects.slice(0, 3).map((p, index) => (
+              {projects.map((p, index) => (
                 <li
                   key={p.id}
                   className={styles.blogItem}
                   style={{ animationDelay: `${index * 0.08}s` }}
                 >
                   <Link href={`/projects/${p.id}`} className={styles.blogLink}>
-                    <span className={styles.blogTitle}>{p.title}</span>
-                    <div className={styles.blogMeta}>
-                      <span className={styles.blogKicker}>
-                        {p.tech.join(" ・ ")}
-                      </span>
-                    </div>
-                    <p className={styles.blogLead}>{p.summary}</p>
+                    {(p as any).thumbnail ? (
+                      <Image
+                        src={(p as any).thumbnail.url}
+                        alt={(p as any).name ?? "project"}
+                        width={160}
+                        height={96}
+                        style={{ width: 160, height: "auto", borderRadius: 12 }}
+                      />
+                    ) : (
+                      <Image
+                        src="/no-image.png"
+                        alt="No Image"
+                        width={160}
+                        height={96}
+                        style={{ width: 160, height: "auto", borderRadius: 12 }}
+                      />
+                    )}
+                    <span className={styles.blogTitle}>
+                      {(p as any).name ?? ""}
+                    </span>
                   </Link>
                 </li>
               ))}

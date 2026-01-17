@@ -9,7 +9,8 @@
 }
 
 .noBg {
-  background: linear-gradient(160deg, #fefdfb 0%, #f7f2eb 60%, #f3ede4 100%);
+  /* 背景の枠組みだけを透明にする: 背景色を透明にして、ボタンやカードなどの他のスタイルはそのまま残す */
+  background: transparent;
 }
 
 .inner {
@@ -57,7 +58,9 @@
   padding: 12px 18px;
   border-radius: 10px;
   font-weight: 600;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .btn:hover {
@@ -80,7 +83,8 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       800px 400px at 10% 20%,
       rgba(125, 211, 252, 0.06),
       transparent 20%
@@ -93,3 +97,6 @@
   z-index: 1;
   pointer-events: none;
 }
+
+/* When the hero is rendered without background, remove the subtle
+   button/bg visuals so the CTA looks flat (matches blog behavior). */
