@@ -145,62 +145,7 @@ export default async function Profile() {
         </section>
       </div>
 
-      <section className={styles.qualifications}>
-        <h2 className={styles.sectionTitle}>資格</h2>
-        {qualError ? (
-          <p className={styles.empty}>
-            資格の取得に失敗しました。しばらくしてから再度お試しください。
-          </p>
-        ) : qualifications.length === 0 ? (
-          <p className={styles.empty}>資格はまだ登録されていません。</p>
-        ) : (
-          <ul className={styles.qualList}>
-            {qualifications.map((item) => (
-              <Link
-                key={item.id}
-                href={`/Profile/qualifications/${item.id}`}
-                className={styles.qualLink}
-              >
-                <li className={styles.qualItem}>
-                  <div className={styles.qualName}>{item.qualifications}</div>
-                  {item.time && (
-                    <div className={styles.qualTime}>
-                      {formatDate(item.time)}
-                    </div>
-                  )}
-                </li>
-              </Link>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <section className={styles.careers}>
-        <h2 className={styles.sectionTitle}>経歴</h2>
-        {careerError ? (
-          <p className={styles.empty}>
-            経歴の取得に失敗しました。しばらくしてから再度お試しください。
-          </p>
-        ) : careers.length === 0 ? (
-          <p className={styles.empty}>経歴はまだ登録されていません。</p>
-        ) : (
-          <ul className={styles.careerList}>
-            {careers.map((item) => (
-              <li key={item.id} className={styles.careerItem}>
-                <div className={styles.careerDot}></div>
-                <div className={styles.careerContent}>
-                  {item.time && (
-                    <div className={styles.careerTime}>
-                      {formatDate(item.time)}
-                    </div>
-                  )}
-                  <div className={styles.careerName}>{item.name}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
+      {/* Duplicate qualifications and careers sections removed (already displayed inside the card) */}
     </div>
   );
 }
