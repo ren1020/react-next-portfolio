@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import ButtonLink from "@/app/_components/ButtonLink";
 import { formatDate } from "@/app/_libs/utils";
 import { getQualificationsList, getCareerList } from "@/app/_libs/microcms";
@@ -98,27 +97,21 @@ export default async function Profile() {
           ) : (
             <ul className={styles.qualList}>
               {qualifications.map((item) => (
-                <Link
-                  key={item.id}
-                  href={`/Profile/qualifications/${item.id}`}
-                  className={styles.qualLink}
-                >
-                  <li className={styles.qualItem}>
-                    <div className={styles.qualName}>{item.qualifications}</div>
-                    {item.time && (
-                      <div className={styles.qualTime}>
-                        {formatDate(item.time)}
-                      </div>
-                    )}
-                  </li>
-                </Link>
+                <li key={item.id} className={styles.qualItem}>
+                  <div className={styles.qualName}>{item.qualifications}</div>
+                  {item.time && (
+                    <div className={styles.qualTime}>
+                      {formatDate(item.time)}
+                    </div>
+                  )}
+                </li>
               ))}
             </ul>
           )}
         </section>
 
         <section className={styles.careers}>
-          <h2 className={styles.sectionTitle}>経歴</h2>
+          <h2 className={styles.sectionTitle}>経歴と人生</h2>
           {careerError ? (
             <p className={styles.empty}>
               経歴の取得に失敗しました。しばらくしてから再度お試しください。

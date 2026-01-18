@@ -43,9 +43,12 @@ export default async function Page({ params, searchParams }: Props) {
     draftKey: searchParams.dk,
   }).catch(() => notFound());
 
+  // Check if this is an overseas training blog (title contains "海外研修")
+  const reverseVideoContent = data.title.includes("海外研修");
+
   return (
     <>
-      <Article data={data} />
+      <Article data={data} reverseVideoContent={reverseVideoContent} />
       <div className={styles.footer}>
         <ButtonLink href="/blog">ブログ一覧へ</ButtonLink>
       </div>

@@ -24,16 +24,16 @@ export default function BlogList({ blogs }: Props) {
                 src={article.thumbnail.url}
                 alt=""
                 className={styles.image}
-                width={article.thumbnail.width}
-                height={article.thumbnail.height}
+                width={140}
+                height={80}
               />
             ) : (
               <Image
                 className={styles.image}
                 src="/no-image.png"
                 alt="No Image"
-                width={1200}
-                height={630}
+                width={140}
+                height={80}
               />
             )}
             <dl className={styles.contents}>

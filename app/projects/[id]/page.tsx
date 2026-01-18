@@ -42,7 +42,7 @@ export default async function ProjectDetail({ params, searchParams }: Props) {
     title: (data as any).name,
     description: (data as any).description ?? "",
     content: (data as any).content ?? "",
-    thumbnail: (data as any).thumbnail ?? undefined,
+    thumbnail: undefined, // Don't show thumbnail for projects
   } as any;
 
   return (

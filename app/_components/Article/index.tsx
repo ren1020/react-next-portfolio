@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Blog } from "@/app/_libs/microcms";
 import {
   convertYoutubeLinksToEmbeds,
@@ -14,9 +13,11 @@ type Props = {
   data: Blog;
   // When false, do not render category (useful for non-blog pages like projects)
   showCategory?: boolean;
+  // When true, show video before content instead of after
+  reverseVideoContent?: boolean;
 };
 
-export default function Article({ data, showCategory = true }: Props) {
+export default function Article({ data, showCategory = true, reverseVideoContent = false }: Props) {
   const contentWithYoutubeEmbeds = convertYoutubeLinksToEmbeds(data.content);
 
   // videoUrl が視聴ページURLの場合、埋め込みURLに変換
@@ -45,24 +46,31 @@ export default function Article({ data, showCategory = true }: Props) {
           ))}
         <Date date={data.time ?? data.publishedAt ?? data.createdAt} />
       </div>
-      {data.thumbnail && (
-        <Image
-          src={data.thumbnail.url}
-          alt=""
-          className={styles.thumbnail}
-          width={data.thumbnail.width}
-          height={data.thumbnail.height}
-        />
+      {reverseVideoContent ? (
+        <>
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: contentWithYoutubeEmbeds,
+            }}
+          />
+          {videoEmbedUrl && (
+            <iframe src={videoEmbedUrl} className={styles.video} allowFullScreen />
+          )}
+        </>
+      ) : (
+        <>
+          {videoEmbedUrl && (
+            <iframe src={videoEmbedUrl} className={styles.video} allowFullScreen />
+          )}
+          <div
+            className={styles.content}
+            dangerouslySetInnerHTML={{
+              __html: contentWithYoutubeEmbeds,
+            }}
+          />
+        </>
       )}
-      {videoEmbedUrl && (
-        <iframe src={videoEmbedUrl} className={styles.video} allowFullScreen />
-      )}
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{
-          __html: contentWithYoutubeEmbeds,
-        }}
-      />
     </main>
   );
 }
