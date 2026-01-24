@@ -35,9 +35,11 @@ export default function RootLayout({
         <BackgroundDots />
         <div className="content">
           <PageTransition>
-            <Header />
-            {children}
-            <Footer />
+            <div className="container">
+              <Header />
+              {children}
+              <Footer />
+            </div>
           </PageTransition>
         </div>
       </body>

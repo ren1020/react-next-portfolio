@@ -1,7 +1,8 @@
 .page {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(160deg, #fefdfb 0%, #f7f2eb 60%, #f3ede4 100%);
+  /* top page background removed (made transparent) */
+  background: none;
   color: #b86943;
   overflow: hidden;
 }
@@ -20,19 +21,15 @@
 .page::before {
   width: 600px;
   height: 600px;
-  background: linear-gradient(135deg, #f4e2d1 0%, #e3a889 50%);
-  top: 4%;
-  left: -18%;
-  animation-delay: 0s;
+  /* decorative top background removed per request */
+  display: none;
 }
 
 .page::after {
   width: 500px;
   height: 500px;
-  background: linear-gradient(135deg, #e3d8f2 0%, #d5a8e8 50%);
-  bottom: -6%;
-  right: -8%;
-  animation-delay: 10s;
+  /* decorative purple background removed per request */
+  display: none;
 }
 
 @keyframes float {
@@ -119,7 +116,8 @@
 }
 
 @keyframes scrollAnimation {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 1;
   }

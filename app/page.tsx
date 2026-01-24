@@ -41,8 +41,12 @@ export default async function Home() {
       {/* ========== セクション 1: ウェルカム ==========*/}
       <section className={styles.welcome}>
         <div className={styles.welcomeInner}>
-          <h1 className={`${styles.welcomeTitle} ${styles.parallaxTitle}`}>Portfolio</h1>
-          <h1 className={`${styles.welcomeSubtitle} ${styles.parallaxSubtitle}`}>
+          <h1 className={`${styles.welcomeTitle} ${styles.parallaxTitle}`}>
+            Portfolio
+          </h1>
+          <h1
+            className={`${styles.welcomeSubtitle} ${styles.parallaxSubtitle}`}
+          >
             ご覧いただきありがとうございます
           </h1>
           <div className={styles.scrollIndicator}>
@@ -94,7 +98,10 @@ export default async function Home() {
                   className={`${styles.blogItem} ${styles.cardHover}`}
                   style={{ animationDelay: `${index * 0.08}s` }}
                 >
-                  <Link href={`/projects/${p.id}`} className={`${styles.blogLink} ${styles.projectCard}`}>
+                  <Link
+                    href={`/projects/${p.id}`}
+                    className={`${styles.blogLink} ${styles.projectCard}`}
+                  >
                     {(p as any).thumbnail ? (
                       <Image
                         src={(p as any).thumbnail.url}
@@ -143,7 +150,10 @@ export default async function Home() {
                   className={`${styles.blogItem} ${styles.cardHover}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <Link href={`/blog/${blog.id}`} className={`${styles.blogLink} ${styles.blogCardLink}`}>
+                  <Link
+                    href={`/blog/${blog.id}`}
+                    className={`${styles.blogLink} ${styles.blogCardLink}`}
+                  >
                     <span className={styles.blogTitle}>{blog.title}</span>
                     <div className={styles.blogMeta}>
                       <Category category={blog.category} />

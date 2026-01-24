@@ -17,7 +17,11 @@ type Props = {
   reverseVideoContent?: boolean;
 };
 
-export default function Article({ data, showCategory = true, reverseVideoContent = false }: Props) {
+export default function Article({
+  data,
+  showCategory = true,
+  reverseVideoContent = false,
+}: Props) {
   const contentWithYoutubeEmbeds = convertYoutubeLinksToEmbeds(data.content);
 
   // videoUrl が視聴ページURLの場合、埋め込みURLに変換
@@ -29,7 +33,7 @@ export default function Article({ data, showCategory = true, reverseVideoContent
     : null;
 
   return (
-    <main>
+    <main className={styles.root}>
       <h1 className={styles.title}>{data.title}</h1>
       <p className={styles.description}>{data.description}</p>
       <div className={styles.meta}>
@@ -55,13 +59,21 @@ export default function Article({ data, showCategory = true, reverseVideoContent
             }}
           />
           {videoEmbedUrl && (
-            <iframe src={videoEmbedUrl} className={styles.video} allowFullScreen />
+            <iframe
+              src={videoEmbedUrl}
+              className={styles.video}
+              allowFullScreen
+            />
           )}
         </>
       ) : (
         <>
           {videoEmbedUrl && (
-            <iframe src={videoEmbedUrl} className={styles.video} allowFullScreen />
+            <iframe
+              src={videoEmbedUrl}
+              className={styles.video}
+              allowFullScreen
+            />
           )}
           <div
             className={styles.content}

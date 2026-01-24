@@ -4,6 +4,80 @@
   text-align: left;
 }
 
+/* Entrance animation: fade + translateY */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* root container to scope entrance animations */
+.root > * {
+  opacity: 0;
+  transform: translateY(12px);
+  animation-name: fadeUp;
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation-fill-mode: both;
+}
+
+/* Stagger delays for the first several children to create a subtle cascade */
+.root > *:nth-child(1) {
+  animation-delay: 60ms;
+}
+.root > *:nth-child(2) {
+  animation-delay: 140ms;
+}
+.root > *:nth-child(3) {
+  animation-delay: 220ms;
+}
+.root > *:nth-child(4) {
+  animation-delay: 300ms;
+}
+.root > *:nth-child(5) {
+  animation-delay: 380ms;
+}
+.root > *:nth-child(6) {
+  animation-delay: 460ms;
+}
+.root > *:nth-child(7) {
+  animation-delay: 540ms;
+}
+.root > *:nth-child(8) {
+  animation-delay: 620ms;
+}
+
+/* Media hover/interaction effects */
+.thumbnail,
+.video {
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+.thumbnail:hover,
+.video:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .root > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .thumbnail,
+  .video {
+    transition: none;
+  }
+}
+
 .description {
   font-size: 0.9rem;
   color: var(--color-text-sub);

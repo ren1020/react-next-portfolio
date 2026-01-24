@@ -21,6 +21,8 @@
   --color-glass: rgba(255, 255, 255, 0.55);
   --border-radius: 14px;
   --radius: 14px;
+  --container-max: 1200px;
+  --container-padding: 24px;
 }
 
 /* Dark mode */
@@ -92,6 +94,27 @@ html.no-bg body {
 .content {
   position: relative;
   z-index: 1;
+}
+
+/* page-wide container utility */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Wider container on very large viewports */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1400px;
+    --container-padding: 32px;
+  }
+  body {
+    font-size: 1.03rem;
+  }
 }
 
 code {

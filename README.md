@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# react-next-portfolio
 
-## Getting Started
+サイトURL: https://react-next-portfolio-hazel.vercel.app/ac
 
-First, run the development server:
+# 課題の紹介
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## TOP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 明るい色と情報量を制限することで見やすさと第一印象をよくしている
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 自己紹介のページ
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 自己紹介をした後に資格や経歴を表示することで自分のスキルを視覚化
+- 自分の経歴をすぐに追加できるようにmicroCMSで管理
 
-## Learn More
+## ブログ一覧ページ
 
-To learn more about Next.js, take a look at the following resources:
+- カテゴリ別フィルタ、検索機能を実装して記事を見つけやすく
+- 記事カードはサムネイル・タイトル・公開日・カテゴリを表示することで情報を簡潔に提示
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ブログ詳細ページ
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- 記事本文の画像最適化、埋め込みコンテンツ対応可能
 
-## Deploy on Vercel
+# 一番見てほしいところ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- ローディングする時のアニメーション
+- サイト全体
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 力を入れた点
+- どのページにいても全てのページに飛べるように工夫
+- パフォーマンス最適化（イメージの遅延読み込み、最小限のJS）
+
+## 実装面
+
+- Next.js の App Router と TypeScript による型安全な設計
+- microCMS を用いた外部コンテンツ管理
+
+## デザイン面
+
+- 一貫したデザインで長時間閲覧していても疲れないように配慮
+
+---

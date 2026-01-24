@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 // 色々な猫の種類
-const CAT_EMOJIS = ["🐱", "🐈", "😺", "😸", "😻", "😼", "😽", "🐈‍⬛", "😹", "😿", "😾", "🙀"];
+const CAT_EMOJIS = ["🐱", "🐈", "😺", "😸", "😻", "😼", "😽", "🐈‍⬛"];
 
 export default function RandomCat() {
   const [cats, setCats] = useState<Array<{ id: number; direction: string; top: string; emoji: string }>>([]);
