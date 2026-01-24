@@ -66,6 +66,8 @@ export default async function Profile() {
                         width={member.image.width || 160}
                         height={member.image.height || 160}
                         className={styles.image}
+                        sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 240px"
+                        priority={false}
                       />
                     )
                   ) : (

@@ -93,16 +93,21 @@
 .name {
   font-size: 1.2rem;
   font-weight: bold;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .position {
   margin-bottom: 8px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .profile {
   font-size: 0.9rem;
   white-space: pre-wrap;
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .footer {
@@ -256,4 +261,160 @@
   font-size: 1.1rem;
   color: #1f2933;
   line-height: 1.4;
+}
+
+/* Responsive: tablet and below */
+@media (max-width: 1024px) {
+  .container {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .pageHeader {
+    margin-bottom: 20px;
+  }
+
+  .list {
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .image,
+  .imagePlaceholder {
+    width: 200px;
+    height: 200px;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+  }
+
+  .qualifications,
+  .careers {
+    padding: 20px;
+  }
+
+  .careerList {
+    padding-left: 28px;
+  }
+
+  .careerList::before {
+    left: 10px;
+  }
+
+  .careerDot {
+    left: -22px;
+    top: 16px;
+  }
+}
+
+/* Responsive: mobile */
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+  }
+
+  .pageTopBar {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .containerInner {
+    max-width: 100%;
+  }
+
+  .list {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .list:nth-child(even) {
+    flex-direction: column;
+  }
+
+  .image,
+  .imagePlaceholder {
+    width: 140px;
+    height: 140px;
+    box-shadow:
+      0 0 0 2px #e3a889,
+      0 0 0 4px #c87f5a,
+      0 8px 24px rgba(200, 127, 90, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .name {
+    font-size: 1.1rem;
+  }
+
+  .profile {
+    font-size: 0.95rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .qualItem {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .qualName {
+    font-size: 1rem;
+  }
+
+  .qualTime {
+    font-size: 0.85rem;
+  }
+
+  .qualifications,
+  .careers {
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+  }
+
+  .careerList {
+    padding-left: 24px;
+  }
+
+  .careerList::before {
+    left: 9px;
+    top: 10px;
+    bottom: 10px;
+  }
+
+  .careerDot {
+    left: -20px;
+    top: 14px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .careerTime {
+    font-size: 0.8rem;
+  }
+
+  .careerName {
+    font-size: 1rem;
+  }
 }
