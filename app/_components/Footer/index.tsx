@@ -53,7 +53,7 @@ export default function Footer() {
           <span className={styles.srOnly}>GitHub</span>
         </a>
       </div>
-      <p className={styles.cr}>© 2025 Ren Okita. All Rights Reserved.</p>
+      <p className={styles.cr}>© 2026 Ren Okita. All Rights Reserved.</p>
     </footer>
   );
 }
