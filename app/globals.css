@@ -106,6 +106,22 @@ html.no-bg body {
   padding-right: var(--container-padding);
 }
 
+/* page title utility */
+.pageTitleWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  text-align: center;
+}
+
 /* Wider container on very large viewports */
 @media (min-width: 1440px) {
   :root {

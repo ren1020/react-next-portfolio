@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import styles from "./index.module.css";
 
+declare global {
+  interface Window {
+    __pageLoaderDone?: boolean;
+  }
+}
+
 export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true);
   const [percent, setPercent] = useState(0);
@@ -14,6 +20,10 @@ export default function PageLoader() {
       const proxy = { value: 0 };
       const tl = gsap.timeline({
         onComplete: () => {
+          if (typeof window !== "undefined") {
+            window.__pageLoaderDone = true;
+            window.dispatchEvent(new Event("page-loader:done"));
+          }
           setIsLoading(false);
         },
       });

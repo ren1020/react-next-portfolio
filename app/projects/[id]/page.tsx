@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProjectDetail } from "@/app/_libs/microcms";
 import Article from "@/app/_components/Article";
-import ButtonLink from "@/app/_components/ButtonLink";
 import styles from "./page.module.css";
 
 type Props = {
@@ -49,9 +48,6 @@ export default async function ProjectDetail({ params, searchParams }: Props) {
     <>
       {/* Projects shouldn't show blog categories */}
       <Article data={articleLike} showCategory={false} />
-      <div className={styles.footer}>
-        <ButtonLink href="/projects">作品一覧へ</ButtonLink>
-      </div>
     </>
   );
 }

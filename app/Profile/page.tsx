@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ButtonLink from "@/app/_components/ButtonLink";
 import { formatDate } from "@/app/_libs/utils";
 import { getQualificationsList, getCareerList } from "@/app/_libs/microcms";
 import { members } from "./data";
@@ -39,14 +38,9 @@ export default async function Profile() {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.pageTopBar}>
-        <div className={styles.headerRight}>
-          <ButtonLink href="/projects">作品一覧へ</ButtonLink>
-        </div>
-      </div>
-      <div className={styles.pageHeader}>
-        <h1 className={styles.sectionTitle}>Profile</h1>
+    <>
+      <div className="pageTitleWrap">
+        <h1 className="pageTitle">Profile</h1>
       </div>
 
       <div className={styles.card}>
@@ -141,6 +135,6 @@ export default async function Profile() {
       </div>
 
       {/* Duplicate qualifications and careers sections removed (already displayed inside the card) */}
-    </div>
+    </>
   );
 }

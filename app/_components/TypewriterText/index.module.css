@@ -1,0 +1,29 @@
+.typewriter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.text {
+  display: inline-block;
+  min-height: 1em;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  background: #c87f5a;
+  border-radius: 2px;
+  animation: caretBlink 900ms step-end infinite;
+}
+
+@keyframes caretBlink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

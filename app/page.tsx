@@ -12,6 +12,7 @@ import { getProjectsList } from "@/app/_libs/microcms";
 import BackgroundDots from "@/app/_components/BackgroundDots";
 import ParallaxEffect from "@/app/_components/ParallaxEffect";
 import RandomCat from "@/app/_components/RandomCat";
+import TypewriterText from "@/app/_components/TypewriterText";
 
 export const revalidate = 60;
 
@@ -41,13 +42,19 @@ export default async function Home() {
       {/* ========== セクション 1: ウェルカム ==========*/}
       <section className={styles.welcome}>
         <div className={styles.welcomeInner}>
-          <h1 className={`${styles.welcomeTitle} ${styles.parallaxTitle}`}>
-            Portfolio
+          <h1
+            className={`${styles.welcomeTitle} ${styles.welcomeTitleTyping} ${styles.parallaxTitle}`}
+          >
+            <TypewriterText text="Portfolio" speed={130} />
           </h1>
           <h1
             className={`${styles.welcomeSubtitle} ${styles.parallaxSubtitle}`}
           >
-            ご覧いただきありがとうございます
+            <TypewriterText
+              text="ご覧いただきありがとうございます！"
+              speed={130}
+              startDelay={130 * "Portfolio".length + 200}
+            />
           </h1>
           <div className={styles.scrollIndicator}>
             <div className={styles.scrollMouse}>
