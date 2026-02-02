@@ -29,7 +29,7 @@ export async function generateMetadata({
       openGraph: {
         title: data.title,
         description: data.description,
-        images: [data?.thumbnail?.url ?? ""],
+        images: [(data as any)?.image?.url || data?.thumbnail?.url || ""],
       },
     };
   } catch (e) {

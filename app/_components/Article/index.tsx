@@ -24,6 +24,9 @@ export default function Article({
 }: Props) {
   const contentWithYoutubeEmbeds = convertYoutubeLinksToEmbeds(data.content);
 
+  // imageフィールドがあればそれを使用、なければthumbnailを使用
+  const displayImage = (data as any).image?.url || data.thumbnail?.url;
+
   // videoUrl が視聴ページURLの場合、埋め込みURLに変換
   const videoEmbedUrl = data.videoUrl
     ? (() => {
@@ -50,6 +53,13 @@ export default function Article({
           ))}
         <Date date={data.time ?? data.publishedAt ?? data.createdAt} />
       </div>
+      {displayImage && (
+        <img
+          src={displayImage}
+          alt={data.title}
+          className={styles.thumbnail}
+        />
+      )}
       {reverseVideoContent ? (
         <>
           <div
